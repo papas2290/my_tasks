@@ -24,8 +24,13 @@ default: &default
 
 development:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: my_tasks_development
-
+  host: 127.0.0.1
+  pool: 5
+  username: my_tasks
+  password: 0000
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -82,7 +87,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: my_tasks_production
   username: my_tasks
   password: <%= ENV['MY_TASKS_DATABASE_PASSWORD'] %>
-  host: localhost
+  host: 127.0.0.1
